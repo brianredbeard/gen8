@@ -32,6 +32,8 @@ msg = "All will become clear in time."
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
+    # Users may (and should) set this value if concerned about session
+    # hijacking of their fortunes.
     app.config.from_mapping(
         SECRET_KEY='dev',
     )
