@@ -6,6 +6,8 @@ gen8 is a simple [Flask][flask] app which loads a series of fortunes from a
 local text file named `messages.txt`.  It then uses [server sent
 events][moz-sse] stream these updates to a client.
 
+![gen8 screenshot](images/screenshot.png)
+
 ## Design
 
 This application consists of two basic components:
