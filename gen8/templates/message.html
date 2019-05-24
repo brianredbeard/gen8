@@ -1,0 +1,21 @@
+<!doctype html>
+<head>
+	<title>what is your fortune?</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+	<div class="center" >
+		<h3>The magic 8 ball says:</h3>
+		<div id="target_div"></div>
+	</div>
+	<script>
+    var eventSource = new EventSource("/stream");
+
+		eventSource.onmessage = function(e) {
+      console.log(e.data);
+			document.getElementById("target_div").innerHTML = e.data;
+		};
+	</script>
+</body>
+</html>
