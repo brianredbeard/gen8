@@ -34,11 +34,36 @@ In general, it is likely best to do this in a Python virtualenv.
 
 ## Running
 
+### Locally
+
 As this is a [Flask][flask] application it can be started as follows:
 
 ```sh
 export FLASK_APP=gen8
 flask run
+```
+
+### Docker
+
+This application can be build using the local Dockerfile.  Alternately it can be
+retrieved from [Quay.io][quay] and run as follows:
+
+```sh
+docker run -p 80:8080 quay.io/brianredbeard/gen8
+```
+
+## Using the application
+
+The web application presents a fortune to users who are present.  There is an
+API endpoint at `/newmsg` which can be triggered by a `GET` or `POST` call to
+that endpoint.
+
+When triggered it will generate a new random value and look up the resulting
+fortune from a list populated in memory.  Once retrieved, it is pushed to all
+users using [server sent events][moz-sse]. e.g.:
+
+```sh
+curl localhost:8080/newmsg
 ```
 
 [flask]:  https://www.palletsprojects.com/p/flask/
